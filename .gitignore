@@ -2,3 +2,6 @@ build/
 dist/
 *.egg-info
 *.geany
+*.ipynb
+.DS_Store
+.ipynb_checkpoints
