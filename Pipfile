@@ -10,6 +10,8 @@ twine = "*"
 pandas = "*"
 sklearn = "*"
 setuptools = "*"
+ipython = "*"
+scipy = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
