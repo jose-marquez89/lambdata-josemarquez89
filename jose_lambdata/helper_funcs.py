@@ -8,25 +8,25 @@ from IPython.display import display
 class DataFrameOperator:
     """Perform pandas.DataFrame operations"""
 
-    def __init__(self, dataframe, feature):
+    def __init__(self, dataframe):
         self.dataframe = dataframe
-        self.feature = feature
+        # ~ self.feature = feature
 
-    def decompose_time(self):
+    def decompose_time(self, feature):
         """Splits a datetime column into year, month
         and day, adds these columns directly to dataframe"""
 
-        if self.dataframe[self.feature].dtype != '<M8[ns]':
+        if self.dataframe[feature].dtype != '<M8[ns]':
             try:
-                self.dataframe[self.feature] = pd.to_datetime(
-                                                 self.dataframe[self.feature]
+                self.dataframe[feature] = pd.to_datetime(
+                                                 self.dataframe[feature]
                                                )
             except TypeError:
                 print("Error: Not a recognized datetime type")
 
-        self.dataframe['year'] = self.dataframe[self.feature].dt.year
-        self.dataframe['month'] = self.dataframe[self.feature].dt.month
-        self.dataframe['day'] = self.dataframe[self.feature].dt.day
+        self.dataframe['year'] = self.dataframe[feature].dt.year
+        self.dataframe['month'] = self.dataframe[feature].dt.month
+        self.dataframe['day'] = self.dataframe[feature].dt.day
 
         return self.dataframe
 
@@ -60,10 +60,16 @@ def get_chi2(dataframe, f1, f2):
     print(f"p-value: {pv}")
     print(f"dof: {dof}")
 
-# ~ if __name__ == "__main__":
-    # ~ message = """this is a multiline string"""
-    # ~ print
-
-
-
-
+if __name__ == "__main__":
+    test_df = pd.read_csv('test_data.csv')
+    op = DataFrameOperator(test_df)
+    train, val, test = op.auto_split()
+    
+    print(train.shape, val.shape, test.shape, '\n')
+    print("DATAFRAME BEFORE DECOMPOSE:\n")
+    print(test_df.head(), '\n')
+    print("DATAFRAME AFTER DECOMPOSE:\n")
+    
+    test_df = op.decompose_time('date_recorded')
+    
+    print(test_df.head())

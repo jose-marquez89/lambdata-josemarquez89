@@ -3,9 +3,15 @@ from setuptools import find_packages, setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
     
+requires = [
+    'ipython>=7.12.0',
+    'pandas>=1.0.1',
+    'scikit-learn>=0.22.1',
+]   
+    
 setup(
     name="lambdata-josemarquez89",
-    version="0.4.2",
+    version="0.4.3",
     author="Jose Marquez",
     author_email="jose_marquez89@outlook.com",
     description="Example package for lambda school DS Unit 3",
