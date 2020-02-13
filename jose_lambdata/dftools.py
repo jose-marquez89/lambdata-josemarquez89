@@ -10,7 +10,6 @@ class DataFrameOperator:
 
     def __init__(self, dataframe):
         self.dataframe = dataframe
-        # ~ self.feature = feature
 
     def decompose_time(self, feature):
         """Splits a datetime column into year, month

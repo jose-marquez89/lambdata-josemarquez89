@@ -11,14 +11,14 @@ requires = [
     
 setup(
     name="lambdata-josemarquez89",
-    version="0.4.3",
+    version="0.4.4",
     author="Jose Marquez",
     author_email="jose_marquez89@outlook.com",
     description="Example package for lambda school DS Unit 3",
     long_description=long_description,
-    long_description_content_type="text/markdown", # required if using a md file for long desc
+    long_description_content_type="text/markdown", 
     license="MIT",
     url="https://github.com/jose-marquez89/lambdata-josemarquez89",
     keywords="lambda school",
-    packages=find_packages() # ["my_lambdata"]
+    packages=find_packages(exclude=("test*")) # ["my_lambdata"]
 )
